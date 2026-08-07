@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.zephyr-jarvis.transport-issue-reporting-platform.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.zephyr-jarvis.transport-issue-reporting-platform.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/transport-issue-reporting-platform.iml" filepath="$PROJECT_DIR$/.idea/modules/transport-issue-reporting-platform.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/transport-issue-reporting-platform.main.iml" filepath="$PROJECT_DIR$/.idea/modules/transport-issue-reporting-platform.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/transport-issue-reporting-platform.test.iml" filepath="$PROJECT_DIR$/.idea/modules/transport-issue-reporting-platform.test.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,173 @@
+package com.zephyr_jarvis.transport_issue_reporting_platform.controllers;
+
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@Tag(
+        name = "Swagger learning examples",
+        description = "Small endpoints that demonstrate common OpenAPI/Swagger annotations."
+)
+public class HelloController {
+
+    @GetMapping
+    @Operation(
+            summary = "Basic hello endpoint",
+            description = "Keeps the original hello endpoint and shows a minimal @Operation annotation."
+    )
+    public String hello() {
+        return "hello";
+    }
+
+    @GetMapping("/swagger-examples/operation")
+    @Operation(
+            summary = "Demonstrate @Operation",
+            description = "Use @Operation to document what an endpoint does, when to call it, and what it returns.",
+            tags = {"Swagger learning examples"}
+    )
+    public ExampleMessage operationExample() {
+        return new ExampleMessage(
+                "Operation annotation",
+                "@Operation adds a summary and longer description to a controller method."
+        );
+    }
+
+    @GetMapping("/swagger-examples/parameters/{issueId}")
+    @Operation(
+            summary = "Demonstrate @Parameter",
+            description = "Shows how path and query parameters can be documented for Swagger UI."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Issue preview was generated."),
+            @ApiResponse(responseCode = "400", description = "The provided issue id or language is invalid.")
+    })
+
+    public IssuePreview parameterExample(
+            @Parameter(
+                    name = "issueId",
+                    description = "Unique id of the transport issue.",
+                    example = "42",
+                    required = true,
+                    in = ParameterIn.PATH
+            )
+            @PathVariable Long issueId,
+            @Parameter(
+                    description = "Language used for the preview message.",
+                    example = "en"
+            )
+            @RequestParam(defaultValue = "en") String language
+    ) {
+        return new IssuePreview(issueId, "Pothole near Central Station", language);
+    }
+
+    @PostMapping("/swagger-examples/request-body")
+    @Operation(
+            summary = "Demonstrate request body documentation",
+            description = "Shows @RequestBody, @Content, @Schema, and @ExampleObject working together."
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "The report draft was accepted.",
+                    content = @Content(schema = @Schema(implementation = ReportResponse.class))
+            ),
+            @ApiResponse(responseCode = "422", description = "The report draft is missing important details.")
+    })
+    public ReportResponse requestBodyExample(
+            @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    description = "Transport issue draft submitted by a passenger.",
+                    required = true,
+                    content = @Content(
+                            schema = @Schema(implementation = ReportDraft.class),
+                            examples = @ExampleObject(
+                                    name = "Broken ticket machine",
+                                    value = """
+                                            {
+                                              "title": "Broken ticket machine",
+                                              "location": "Central Station, platform 3",
+                                              "description": "The card reader does not accept contactless payment."
+                                            }
+                                            """
+                            )
+                    )
+            )
+            @RequestBody ReportDraft draft
+    ) {
+        return new ReportResponse(
+                "REPORT-DEMO-1001",
+                "Draft received: " + draft.title(),
+                "Example response generated by HelloController."
+        );
+    }
+
+    @GetMapping("/swagger-examples/responses/{status}")
+    @Operation(
+            summary = "Demonstrate @ApiResponses",
+            description = "Documents multiple possible HTTP responses for the same endpoint."
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "The requested example status is available.",
+                    content = @Content(schema = @Schema(implementation = ExampleMessage.class))
+            ),
+            @ApiResponse(responseCode = "404", description = "The requested example status does not exist."),
+            @ApiResponse(responseCode = "500", description = "Unexpected server error.")
+    })
+    public ExampleMessage responsesExample(
+            @Parameter(description = "Status keyword to preview.", example = "open")
+            @PathVariable String status
+    ) {
+        return new ExampleMessage("Status example", "Swagger documents status '" + status + "' as a response example.");
+    }
+
+    @Hidden
+    @GetMapping("/swagger-examples/hidden")
+    public ExampleMessage hiddenExample() {
+        return new ExampleMessage(
+                "Hidden endpoint",
+                "@Hidden removes this endpoint from the generated Swagger documentation."
+        );
+    }
+
+    public record ExampleMessage(
+            @Schema(example = "Operation annotation") String title,
+            @Schema(example = "@Operation adds a summary and description.") String message
+    ) {
+    }
+
+    public record IssuePreview(
+            @Schema(example = "42") Long issueId,
+            @Schema(example = "Pothole near Central Station") String title,
+            @Schema(example = "en") String language
+    ) {
+    }
+
+    public record ReportDraft(
+            @Schema(example = "Broken ticket machine") String title,
+            @Schema(example = "Central Station, platform 3") String location,
+            @Schema(example = "The card reader does not accept contactless payment.") String description
+    ) {
+    }
+
+    public record ReportResponse(
+            @Schema(example = "REPORT-DEMO-1001") String reportId,
+            @Schema(example = "Draft received: Broken ticket machine") String status,
+            @Schema(example = "Example response generated by HelloController.") String note
+    ) {
+    }
+}
