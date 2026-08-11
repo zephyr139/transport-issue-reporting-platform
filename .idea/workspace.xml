@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17b41d43-54d4-445c-9fc9-a2c8a2cf7c87" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/zephyr_jarvis/transport_issue_reporting_platform/controllers/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/com.zephyr-jarvis.transport-issue-reporting-platform.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/com.zephyr-jarvis.transport-issue-reporting-platform.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/endpoints.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/endpoints.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +122,7 @@
       <recent name="D:\JavaSpringProjects\transport-issue-reporting-platform\Backend" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.TransportIssueReportingPlatformApplication (1)">
+  <component name="RunManager">
     <configuration name="TransportIssueReportingPlatformApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="com.zephyr-jarvis.transport-issue-reporting-platform.main" />
@@ -170,6 +163,7 @@
       <workItem from="1786095773851" duration="8775000" />
       <workItem from="1786105011956" duration="1406000" />
       <workItem from="1786106449851" duration="642000" />
+      <workItem from="1786456174080" duration="11000" />
     </task>
     <servers />
   </component>
