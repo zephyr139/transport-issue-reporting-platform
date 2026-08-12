@@ -1,3 +1,10 @@
 spring:
   application:
     name: transport-issue-reporting-platform
+  docker:
+    compose:
+      file: ../docker-compose.yaml
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop

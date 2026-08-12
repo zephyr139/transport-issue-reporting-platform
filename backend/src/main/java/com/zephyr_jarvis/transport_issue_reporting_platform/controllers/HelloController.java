@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 )
 public class HelloController {
 
-    @GetMapping
+    @GetMapping("/")
     @Operation(
             summary = "Basic hello endpoint",
             description = "Keeps the original hello endpoint and shows a minimal @Operation annotation."
