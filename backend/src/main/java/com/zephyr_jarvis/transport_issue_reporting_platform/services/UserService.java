@@ -3,6 +3,7 @@ package com.zephyr_jarvis.transport_issue_reporting_platform.services;
 import com.zephyr_jarvis.transport_issue_reporting_platform.dtos.RegisterDTO;
 import com.zephyr_jarvis.transport_issue_reporting_platform.model.Users;
 import com.zephyr_jarvis.transport_issue_reporting_platform.repositories.UsersRepo;
+import com.zephyr_jarvis.transport_issue_reporting_platform.security.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,6 +20,9 @@ public class UserService {
 
     @Autowired
     private AuthenticationManager authManager;
+
+    @Autowired
+    private JwtService jwtService;
 
     @Autowired
     private PasswordEncoder encoder;
@@ -42,14 +46,13 @@ public class UserService {
                             (new UsernamePasswordAuthenticationToken(username, password));
 
             if (auth.isAuthenticated()) {
-                return "Successfully logged in";
+                return jwtService.generateToken(username);
             }
         } catch (AuthenticationException e) {
             e.printStackTrace();
             System.out.println("Failed to log in");
         }
 
-        System.out.println(username + " " + password);
         return "Failed";
     }
 }
