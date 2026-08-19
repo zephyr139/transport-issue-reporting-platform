@@ -1,4 +1,4 @@
-package com.zephyr_jarvis.transport_issue_reporting_platform.issue_report;
+package com.zephyr_jarvis.transport_issue_reporting_platform.issue_report.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

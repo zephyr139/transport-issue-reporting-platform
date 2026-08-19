@@ -1,5 +1,13 @@
 package com.zephyr_jarvis.transport_issue_reporting_platform.issue_report;
 
+import com.zephyr_jarvis.transport_issue_reporting_platform.issue_report.model.Category;
+import com.zephyr_jarvis.transport_issue_reporting_platform.issue_report.model.IssueReport;
+import com.zephyr_jarvis.transport_issue_reporting_platform.issue_report.model.Route;
+import com.zephyr_jarvis.transport_issue_reporting_platform.issue_report.model.Stop;
+import com.zephyr_jarvis.transport_issue_reporting_platform.issue_report.repos.CategoryRepo;
+import com.zephyr_jarvis.transport_issue_reporting_platform.issue_report.repos.IssueReportRepo;
+import com.zephyr_jarvis.transport_issue_reporting_platform.issue_report.repos.RouteRepo;
+import com.zephyr_jarvis.transport_issue_reporting_platform.issue_report.repos.StopRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

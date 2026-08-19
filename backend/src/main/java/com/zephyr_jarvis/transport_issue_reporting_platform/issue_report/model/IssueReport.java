@@ -1,5 +1,7 @@
-package com.zephyr_jarvis.transport_issue_reporting_platform.issue_report;
+package com.zephyr_jarvis.transport_issue_reporting_platform.issue_report.model;
 
+import com.zephyr_jarvis.transport_issue_reporting_platform.issue_report.enums.VehiecleType;
+import com.zephyr_jarvis.transport_issue_reporting_platform.issue_report.enums.IssueReportStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
