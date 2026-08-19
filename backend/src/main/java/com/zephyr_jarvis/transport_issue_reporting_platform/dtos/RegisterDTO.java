@@ -12,6 +12,10 @@ public record RegisterDTO(
         @Size(min = 4, max = 12, message = "Password must be between 4 and 12 characters") // TODO: change the min password length
         String password,
 
+        @NotBlank(message = "Password is required")
+        @Size(min = 4, max = 12, message = "Password must be between 4 and 12 characters") // TODO: change the min password length
+        String passwordConfirmation,
+
         @NotBlank(message = "First name is required")
         String firstName,
 

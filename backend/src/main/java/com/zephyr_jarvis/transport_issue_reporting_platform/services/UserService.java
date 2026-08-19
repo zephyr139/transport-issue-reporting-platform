@@ -27,8 +27,13 @@ public class UserService {
     @Autowired
     private PasswordEncoder encoder;
 
+    @Autowired
+    private ValidationManager validator;
+
     public Users register(RegisterDTO dto) {
         Users user = new Users();
+
+        validator.validateRegistration(dto);
 
         user.setEmail(dto.email());
         user.setPassword(encoder.encode(dto.password()));
