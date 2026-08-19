@@ -1,9 +1,6 @@
 package com.zephyr_jarvis.transport_issue_reporting_platform.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,4 +22,7 @@ public class Users {
     private String lastName;
 
     private int age;
+
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 }

@@ -1,5 +1,6 @@
 package com.zephyr_jarvis.transport_issue_reporting_platform.security.config;
 
+import com.zephyr_jarvis.transport_issue_reporting_platform.model.UserRole;
 import com.zephyr_jarvis.transport_issue_reporting_platform.security.JwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -36,6 +37,7 @@ public class SpringSecurityConfig {
                         .authorizeHttpRequests(authorizeRequests ->
                                 authorizeRequests
                                         .requestMatchers("/register","/login").permitAll()
+                                        .requestMatchers("/swagger-examples/**").hasAnyRole(String.valueOf(UserRole.EMPLOYEE)) // TODO: change to real prod requests
                                         .anyRequest().authenticated())
                         .httpBasic(Customizer.withDefaults())
                         .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
