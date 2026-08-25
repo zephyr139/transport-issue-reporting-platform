@@ -36,7 +36,8 @@ public class SpringSecurityConfig {
                         .csrf(CsrfConfigurer::disable)
                         .authorizeHttpRequests(authorizeRequests ->
                                 authorizeRequests
-                                        .requestMatchers("/register","/login").permitAll()
+                                        .requestMatchers("/auth/register", "/auth/login").permitAll()
+                                        .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                                         .requestMatchers("/swagger-examples/**").hasAnyRole(String.valueOf(UserRole.EMPLOYEE)) // TODO: change to real prod requests
                                         .anyRequest().authenticated())
                         .httpBasic(Customizer.withDefaults())
