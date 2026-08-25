@@ -1,6 +1,6 @@
 package com.zephyr_jarvis.transport_issue_reporting_platform.services;
 
-import com.zephyr_jarvis.transport_issue_reporting_platform.dtos.RegisterDTO;
+import com.zephyr_jarvis.transport_issue_reporting_platform.dtos.RegisterRequest;
 import com.zephyr_jarvis.transport_issue_reporting_platform.repositories.UsersRepo;
 import jakarta.validation.ValidationException;
 import jakarta.validation.constraints.NotNull;
@@ -24,7 +24,7 @@ public class ValidationManager {
     @Autowired
     private UsersRepo usersRepo;
 
-    public void validateRegistration(RegisterDTO dto) {
+    public void validateRegistration(RegisterRequest dto) {
         if (!isFreeEmail(dto.email())) {
             throw new ValidationException("Username with such email already exists");
         }

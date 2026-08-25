@@ -1,19 +1,14 @@
 package com.zephyr_jarvis.transport_issue_reporting_platform.services;
 
-import com.zephyr_jarvis.transport_issue_reporting_platform.controllers.UserController;
-import com.zephyr_jarvis.transport_issue_reporting_platform.dtos.RegisterDTO;
+import com.zephyr_jarvis.transport_issue_reporting_platform.controllers.AuthController;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.Executable;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ValidationManagerTest {
 
     ValidationManager validator = new ValidationManager();
 
-    UserController controller = new UserController();
+    AuthController controller = new AuthController();
 
     @Test
     public void noDigitPassword() {

@@ -1,6 +1,6 @@
 package com.zephyr_jarvis.transport_issue_reporting_platform.services;
 
-import com.zephyr_jarvis.transport_issue_reporting_platform.dtos.RegisterDTO;
+import com.zephyr_jarvis.transport_issue_reporting_platform.dtos.RegisterRequest;
 import com.zephyr_jarvis.transport_issue_reporting_platform.model.Users;
 import com.zephyr_jarvis.transport_issue_reporting_platform.repositories.UsersRepo;
 import com.zephyr_jarvis.transport_issue_reporting_platform.security.JwtService;
@@ -30,7 +30,7 @@ public class UserService {
     @Autowired
     private ValidationManager validator;
 
-    public Users register(RegisterDTO dto) {
+    public Users register(RegisterRequest dto) {
         Users user = new Users();
 
         validator.validateRegistration(dto);
