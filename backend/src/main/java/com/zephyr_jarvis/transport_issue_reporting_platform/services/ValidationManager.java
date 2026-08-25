@@ -31,7 +31,7 @@ public class ValidationManager {
 
         if (!isPasswordValid(dto.password())) {
             throw new ValidationException("Password is incorrect. \n" +
-                    "Password must contain at least ");
+                    "Password must contain at least one digit, one lowercase letter, one uppercase letter, one special character, and no spaces");
         }
 
         if (!dto.password().equals(dto.passwordConfirmation())) {
