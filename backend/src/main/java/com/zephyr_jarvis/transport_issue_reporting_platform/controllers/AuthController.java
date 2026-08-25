@@ -31,7 +31,7 @@ public class AuthController {
     @Operation(summary = "Register a new user", description = "Creates a user account from the submitted registration data.")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "User was registered successfully."),
-            @ApiResponse(responseCode = "400", description = "Registration data is invalid.")
+            @ApiResponse(responseCode = "400", description = "Registration data is invalid, email is already used, or passwords do not match.")
     })
     public Users register(
             @io.swagger.v3.oas.annotations.parameters.RequestBody(
