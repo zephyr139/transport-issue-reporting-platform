@@ -13,16 +13,18 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/issue-reports")
 @Tag(name = "Issue reports", description = "Endpoints for creating transport issue reports.")
 public class IssueReportController {
 
     @Autowired
     IssueReportService issueReportService;
 
-    @PostMapping
+    @PostMapping("/create")
     @Operation(
             summary = "Create issue report",
             description = "Creates a transport issue report for a selected category and stop."
