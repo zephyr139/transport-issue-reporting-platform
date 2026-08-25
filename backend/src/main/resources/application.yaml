@@ -4,7 +4,19 @@ spring:
   docker:
     compose:
       file: ../docker-compose.yaml
+  datasource:
+    url: jdbc:postgresql://localhost:5434/tirp
+    username: postgres
+    password: password
+
   jpa:
     generate-ddl: true
     hibernate:
       ddl-auto: create-drop
+
+
+
+# TODO: turn on in prod
+#springdoc:
+#  swagger-ui:
+#      enabled: false
