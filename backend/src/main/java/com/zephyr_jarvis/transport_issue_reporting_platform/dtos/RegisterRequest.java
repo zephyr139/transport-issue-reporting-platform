@@ -2,7 +2,7 @@ package com.zephyr_jarvis.transport_issue_reporting_platform.dtos;
 
 import jakarta.validation.constraints.*;
 
-public record RegisterDTO(
+public record RegisterRequest(
 
         @NotBlank(message = "Email is required")
         @Email(message = "Invalid email format")
