@@ -1,11 +1,11 @@
-package com.zephyr_jarvis.transport_issue_reporting_platform.issue_report;
+package com.zephyr_jarvis.transport_issue_reporting_platform.issue_report.report_dtos.request;
 
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import org.jspecify.annotations.Nullable;
 
-public record IssueReportUserDTO(
+public record UserIssueReportRequestDto(
     @Nullable
     @Size(min = 3, max = 60)
     String title,
@@ -18,11 +18,10 @@ public record IssueReportUserDTO(
     Long categoryId,
 
     @NotBlank
-    Long stopId,
+    Long stationId,
 
-    @Nullable
-    Long routeId
-
+    @NotBlank
+    Long nextStationId // TODO: verify if the nextStation is valid
 
 //    @Nullable
 //    Timestamp approximateOccurrence
