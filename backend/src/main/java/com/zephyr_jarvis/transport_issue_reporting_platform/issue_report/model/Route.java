@@ -1,5 +1,6 @@
 package com.zephyr_jarvis.transport_issue_reporting_platform.issue_report.model;
 
+import com.zephyr_jarvis.transport_issue_reporting_platform.issue_report.enums.Circle;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,12 +19,12 @@ public class Route {
 
     private int number;
 
-    @OneToMany(mappedBy = "route")
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Circle circle;
+
+    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("sequenceNumber ASC")
     private List<Stop> stops;
 
-    private String name;
-
-    private String startStation;
-
-    private String endStation;
 }

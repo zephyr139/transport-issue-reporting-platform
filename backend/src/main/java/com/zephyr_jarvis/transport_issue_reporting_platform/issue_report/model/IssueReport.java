@@ -26,7 +26,7 @@ public class IssueReport {
     private String description;
 
     @ManyToOne
-    @JoinTable(name = "category_id")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToOne
@@ -51,7 +51,7 @@ public class IssueReport {
 
     private BigDecimal longitude;
 
-    private Timestamp creationDate;
+    private Timestamp createdAt;
 
 //    Department provides:
 
